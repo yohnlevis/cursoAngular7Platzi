@@ -1,0 +1,20 @@
+<input type="text" [(ngModel)]="title" />
+{{title}}
+
+<input type="text" [(ngModel)]="power"/>
+{{power | exponential}}
+
+<div *ngIf="title === 'nicolas'">Este es nicolas</div>
+
+<div *ngIf="title === 'julian'">Este es Julian</div>
+<div *ngIf="title === 'pedro'">Este es pedro</div>
+
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'julian'">Este es Julian</p>
+  <p *ngSwitchCase="'nicolas'">Este es Nicolas</p>
+  <p *ngSwitchCase="'pedro'">Este es Pedro</p>
+  <p *ngSwitchDefault>
+    No hay match, osea no hay ninguno, es como el caso default de switch
+  </p>
+</div>
+
