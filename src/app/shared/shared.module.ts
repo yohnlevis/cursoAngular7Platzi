@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MaterialModule } from "./../material/material.module";
 
 
 
@@ -21,11 +22,13 @@ import { FooterComponent } from './components/footer/footer.component';
     ExponentialPipe,
     HighlightDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MaterialModule
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

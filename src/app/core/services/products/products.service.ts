@@ -1,69 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../../models/product.model';
+import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { ReturnStatement } from '@angular/compiler';
+import { environment } from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
-  products: Product[] = [
-    {
-      id: '1',
-      image: 'assets/images/camiseta.png',
-      title: 'Camiseta',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '2',
-      image: 'assets/images/hoodie.png',
-      title: 'Hoodie',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '3',
-      image: 'assets/images/mug.png',
-      title: 'Mug',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '4',
-      image: 'assets/images/pin.png',
-      title: 'Pin',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '5',
-      image: 'assets/images/stickers1.png',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '6',
-      image: 'assets/images',
-      title: 'Stickers',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-  ];
+  
 
   getAllProducts() {
-    return this.products;
+    //con el Product[] se le esta diciendo que la respuesta que se espera es de tipo Product
+    return this.http.get<Product[]>( `${environment.url_api}`);
   }
 
-  getProduc(id: string) {
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
-        return this.products[i];
-      }
-    }
-    return this.products[-0];
+  getProduc (id: string) : Observable<any> {
+    
+        return this.http.get(`${environment.url_api}/${id}`);
+  
+  }
+  createProduct(produc : Product){
+    return this.http.post(environment.url_api, produc);
+  }
+
+  //con esto no envio todo el producto sino una parte de el... 
+  updateProduct(id: string, changes: Partial<Product>){
+  return this.http.put( `${environment.url_api}/${id}`, changes )
+  }
+
+  deleteProduct(id: String){
+      return this.http.delete(`${environment.url_api}/${id}`);
   }
 }

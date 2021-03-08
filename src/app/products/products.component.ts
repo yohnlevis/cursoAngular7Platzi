@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductsService } from '../core/services/products/products.service';
+
 import { Product } from "../models/product.model";
+import { ProductsService } from '../core/services/products/products.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['../product.component.scss']
+  styleUrls: ['../product.component.scss'],
+  providers:[ProductsService]
 })
 export class ProductsComponent implements OnInit {
   today = new Date();
@@ -21,7 +23,7 @@ products : Product[]=[];
   }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.fetchProducts();
   }
 
   clickProduct(id: number) {
@@ -29,8 +31,13 @@ products : Product[]=[];
     console.log(id);
   }
 
-  getProducts(){
-    this.products  = this.producService.getAllProducts();
+  fetchProducts(){
+    this.producService.getAllProducts()
+    .subscribe(productos => {
+      
+      this.products= productos;
+    
+    } )
     
   }
 addCart(id:string){

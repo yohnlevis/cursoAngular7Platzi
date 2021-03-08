@@ -1,27 +1,27 @@
 <!-- <app-header></app-header> -->
-<div class="product-list">
-  
-
+<div class="product-list"> 
 <div *ngFor="let product of products">
 
-  
-  <h1 appHighlight >{{product.title}}</h1>
-
-  <div class="host">
-  
-    <h3>{{ product.id }}</h3>
-    <strong>{{ product.price | currency}}</strong>
-    {{ product.description |slice:0:10}}
-    <p>{{today | date:'medium'}}</p>
+   <div class="margen">  
+  <mat-card-header>
+    <mat-card-title>{{ product.title }}</mat-card-title>
+    <mat-card-subtitle>{{ product.price | currency }} </mat-card-subtitle>
+    <p>{{ today | date: "medium"}}</p>
+  </mat-card-header>
+  <div class="crop-image">
     <img [src]="product.image" alt="" />
-    <button (click)="addCart(product.id)">Agregar al carrito</button>
-    <a [routerLink]= "['/products',product.id]" >Ver detalles</a> 
-  
   </div>
+  <mat-card-content> {{ product.description | slice: 0:10 }}</mat-card-content>
+
+  <mat-card-actions>
+    <a [routerLink]="['/products', product.id]">Ver detalles</a>
+    <button (click)="addCart(product.id)" mat-raised-button color="primary">
+      Agregar al carrito
+    </button>
+  
+  </mat-card-actions>
 
 </div>
 
 </div>
-
-
-
+</div>

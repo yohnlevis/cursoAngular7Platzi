@@ -6,9 +6,11 @@ import { DemoComponent } from './demo/demo.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductComponent } from './product/product.component';
+
 import { ProductsComponent } from './products/products.component';
 import { AdminGuard } from "./admin.guard";
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import { NavegacionesComponent } from './product/navegaciones/navegaciones.component';
 
 
 const routes: Routes = [
@@ -44,10 +46,22 @@ const routes: Routes = [
       path:'products/:id',
       component:ProductDetailComponent
     },
+
+    {
+     path:'navegacion',
+     component: NavegacionesComponent,
+     children: [
+      {
+        path:'create',
+        component: ProductFormComponent
+      }
+     ]
+    },
     {
       path: '**',
       component: PageNotFoundComponent
     }
+
 
    ]
 

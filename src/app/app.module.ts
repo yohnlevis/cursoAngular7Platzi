@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //imports de forms 
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProductComponent } from './product/product.component';
 /* import { ExponentialPipe } from './shared/pipes/exponential/exponential.pipe'; */
 /* import { HighlightDirective } from './shared/directives/highlight/highlight.directive'; */
@@ -22,6 +23,13 @@ import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from "./material/material.module";
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import { NavegacionesComponent } from './product/navegaciones/navegaciones.component';
+import { LayoutModule } from '@angular/cdk/layout';
+
+import { ProductsListComponent } from './products-list/products-list.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +45,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*     BannerComponent, */
     PageNotFoundComponent,
     ProductDetailComponent,
-    LayoutComponent
+    LayoutComponent,
+    ProductFormComponent,
+    NavegacionesComponent,
+    ProductsListComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -45,7 +57,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule, 
     SharedModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+  /*   MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule, */
+    ReactiveFormsModule,
+     LayoutModule,
+     HttpClientModule
+     /*
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule */
   ],
   providers: [],
   bootstrap: [AppComponent]

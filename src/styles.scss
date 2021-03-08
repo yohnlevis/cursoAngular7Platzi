@@ -6,15 +6,42 @@
 .product-list{
   display: grid;
   grid-template-columns: repeat(1,1fr);
+  grid-gap: 50px 20px;
+  
 
+  
 }
+
+.margen{
+  background-color: rgb(238, 244, 245);
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid ;
+  
+}
+
+
 @media (min-width:576px){
   .product-list{
   grid-template-columns: repeat(3,1fr);
+
+
+
+  .container{
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;  
+
+    
+    }
   
 }
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
